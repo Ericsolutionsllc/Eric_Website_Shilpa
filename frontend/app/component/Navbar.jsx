@@ -16,7 +16,7 @@ const insightsLinks = [
 const solutionsLinks = [
   { name: "Clinical Operations & Project Management", slug: "clinical-operations" },
   { name: "Data Management", slug: "data-management" },
-  { name: "Clinical Data Standard", slug: "clinical-data" },
+  { name: "Clinical Data Standards", slug: "clinical-data" },
   { name: "Biostatistics", slug: "biostatistics" },
   { name: "Medical Writing", slug: "medical-writing" },
   { name: "eTMF Services", slug: "eTMF" },

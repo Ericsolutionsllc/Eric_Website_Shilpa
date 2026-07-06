@@ -55,7 +55,7 @@ export default function ETMF() {
             viewport={{ once: true }}
           >
             <h1 className="text-center text-3xl md:text-4xl font-bold mt-28">
-              eTMF Service{" "}
+              eTMF Services{" "}
             </h1>
           </motion.div>
 

@@ -90,7 +90,7 @@ export default function ClinicalOperations() {
         viewport={{once:true}}
       >
           <h1 className="text-center text-3xl md:text-4xl font-bold mt-28 ">
-            Clinical Operation & Project Management
+            Clinical Operations & Project Management
           </h1>
           </motion.div>
           

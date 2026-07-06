@@ -33,7 +33,7 @@ export default function WhyChooseUs() {
       icon: <FaUserFriends />,
       value: 95,
       suffix: "%",
-      label: "Recruitment",
+      label: "On-Time Recruitment",
     },
     {
       icon: <FaGlobe />,

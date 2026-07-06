@@ -73,9 +73,9 @@ export default function ContactPage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h1 className="text-3xl md:text-4xl font-bold mb-4">
               Tell us about your <span className="text-[#0B5EA8]">study</span>
-            </h2>
+            </h1>
             <p className="text-gray-700 text-md">
               Share the protocol, phase, indication, and timeline, and we will
               respond with a fixed-fee proposal and a team that has run trials

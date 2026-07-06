@@ -35,7 +35,7 @@ export default function EricComingSoon() {
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
         >
           <h2 className="text-4xl md:text-4xl font-bold text-black leading-tight">
-            eRIC AI:  <span className="text-[#0B5EA8]">AI agents accelerating clinical trials, responsibly</span>
+            eRIC AI:  <span className="text-[#0B5EA8]">AI agents that accelerating clinical trials, responsibly</span>
           </h2>
 
           <p className="text-gray-600 mt-4 text-lg">

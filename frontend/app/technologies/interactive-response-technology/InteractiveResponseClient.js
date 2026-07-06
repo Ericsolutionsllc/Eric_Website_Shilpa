@@ -47,7 +47,7 @@ export default function InteractiveResponse() {
   const content = {
     iwrs: {
       title: "IWRS - INTERACTIVE WEB RESPONSE SYSTEM",
-      text: "Simple and intutive. The IWRS will allow subjects to be enrolled in your clinical trial 24/7 at an affordable price. The IWRS can also communicate with other systems automatically including our ETC system , allow you to use ITClinical's IWRS tool independently while maintaining a communication with an external vendor's tool",
+      text: "Simple and intuitive. eRIC IWRS enrolls subjects into your trial 24/7 and communicates automatically with other systems, including our EDC. Where a study requires it, it also integrates with external vendors' IRT tools.",
       subheading1: "Enroll Patients in the clinical trial",
       subheading2: "Export PDF/Spreadsheet reports",
       subheading3: "Multi-language support",
@@ -94,7 +94,7 @@ export default function InteractiveResponse() {
             className="sm:mb-10"
           >
             <h1 className="text-center text-3xl md:text-4xl font-bold mt-28">
-              ERIC Interactive Response Technology (IRT){" "}
+              eRIC Interactive Response Technology (IRT){" "}
             </h1>
           </motion.div>
 
@@ -126,7 +126,7 @@ export default function InteractiveResponse() {
                 viewport={{ once: true }}
               >
                 <p className="text-gray-500 mb-6 leading-relaxed text-justify text-[17px]">
-                  ERIC Interactive Response Technology (IRT), offers Interactive
+                  eRIC Interactive Response Technology (IRT), offers Interactive
                   Web Response System.
                 </p>
               </motion.div> */}
@@ -138,7 +138,7 @@ export default function InteractiveResponse() {
                 viewport={{ once: true }}
               >
                 <p className="text-gray-500 mb-8 leading-relaxed text-justify text-[17px]">
-                  ERIC IRT (RTSM) handles subject randomization and clinical trial supply management in one configurable system. It assigns subjects to arms by your scheme, manages drug inventory and resupply across sites, and protects the blind — so the right patient gets the right kit at the right time, and supply never stalls enrollment.
+                  eRIC IRT (RTSM) handles subject randomization and clinical trial supply management in one configurable system. It assigns subjects to arms by your scheme, manages drug inventory and resupply across sites, and protects the blind — so the right patient gets the right kit at the right time, and supply never stalls enrollment.
 
                 </p>
               </motion.div>

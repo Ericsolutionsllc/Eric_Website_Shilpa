@@ -600,7 +600,7 @@ export default function Hero() {
                 <p className="mt-5 text-sm md:text-[15px] text-gray-400">
                   
                   <span className="font-bold text-white"> eRIC SOLUTIONS</span>,
-                  is a full-service CRO and regulatory affairs partner. We run Phase I–IV clinical trials and the data, biostatistics, safety, and regulatory work behind them — for pharma, biotech, and medical-device sponsors in the US, Europe, and Asia. Our Eric AI agents remove the operational bottlenecks that slow trials down, with humans in control.
+                  is a full-service CRO and regulatory affairs partner. We run Phase I–IV clinical trials and the data, biostatistics, safety, and regulatory work behind them — for pharma, biotech, and medical-device sponsors in the US, Europe, and Asia. Our eRIC AI agents remove the operational bottlenecks that slow trials down, with humans in control.
 
                 </p>
 

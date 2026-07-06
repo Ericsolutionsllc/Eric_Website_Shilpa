@@ -208,7 +208,7 @@ export default function ClinicalData() {
 
           {/* Quote Box */}
           <div className="mt-8 border-l-4 border-gray-800 bg-gray-100 p-4 italic text-gray-700 text-[17px] font-medium">
-            "Optimize your clinical trial data with ERIC’s CDISC expertise,
+            "Optimize your clinical trial data with eRIC’s CDISC expertise,
             ensuring accuracy, compliance, and streamlined data submissions."
           </div>
         </div>

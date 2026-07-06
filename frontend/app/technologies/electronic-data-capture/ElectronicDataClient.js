@@ -32,11 +32,11 @@ export default function ElectronicData() {
         "Get an overview of study statistics as your studies are ongoing.",
         "Track data entry progress and outstanding queries.",
         "View verification status (SDV) for steps.",
-        "ERIC introduces enhanced analytical dashboards.",
+        "eRIC introduces enhanced analytical dashboards.",
       ],
     },
     {
-      title: "Acheive Global Compliance Easily",
+      title: "Achieve Global Compliance Easily",
       points: [
         "Comply with global standards such as FDA CFR Part 11, GDPR (EU), ICH GCP, HIPAA (US), ISO 27001, and ISO 9001.",
         "Align with GCP, HL7 FHIR, and other regulatory guidelines.",
@@ -47,7 +47,7 @@ export default function ElectronicData() {
 
   const features = [
     {
-      title: "Build Advance eCRF quickly",
+      title: "Build Advanced eCRFs Quickly",
       points: [
         "Begin with one of our pre-built eCRF templates.",
         "Customize your form with 21 different field types.",
@@ -70,7 +70,7 @@ export default function ElectronicData() {
       ],
     },
     {
-      title: "Acheive Global Compliance Easily",
+      title: "Achieve Global Compliance Easily",
       points: [
         "Comply with global standards such as FDA CFR Part 11, GDPR (EU), ICH GCP, HIPAA (US), ISO 27001, and ISO 9001.",
         "Align with GCP, HL7 FHIR, and other regulatory guidelines.",
@@ -108,7 +108,7 @@ export default function ElectronicData() {
             className="sm:mb-6"
           >
             <h1 className="text-center text-3xl md:text-4xl font-bold mt-28">
-              Eric Electronic Data Capture(EDC)
+              eRIC Electronic Data Capture(EDC)
             </h1>
           </motion.div>
 
@@ -139,7 +139,7 @@ export default function ElectronicData() {
                 viewport={{ once: true }}
               >
                 <p className="text-gray-500 mb-6 leading-relaxed text-justify text-[17px]">
-                ERIC EDC is our electronic data capture platform for trials of any phase and size. Built-in edit checks catch errors at entry, CDISC alignment is there from the start, and the Eric AI DB Designer turns protocol-to-CRF build into a fast, validated process instead of a long manual cycle.
+                eRIC EDC is our electronic data capture platform for trials of any phase and size. Built-in edit checks catch errors at entry, CDISC alignment is there from the start, and the eRIC AI DB Designer turns protocol-to-CRF build into a fast, validated process instead of a long manual cycle.
 
                 </p>
               </motion.div>

@@ -18,8 +18,8 @@ export default function EricComingSoon() {
           <div className="relative w-full max-w-md h-[300px] md:h-[400px]">
             <Link   href="https://ai.ericsolutions.com/" target="blank">
             <Image
-              src="/comingsoon/logo.gif"
-              alt="eRIC AI Coming Soon"
+              src="/comingsoon/eRIC AI logo.gif"
+              alt="eRIC AI — AI agents for clinical trials"
               fill
               className="object-contain"
               priority

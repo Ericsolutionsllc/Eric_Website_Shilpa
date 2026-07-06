@@ -11,27 +11,27 @@ export default function DataManagement() {
 
   const services = [
     {
-      title: "CRF Design at ERIC",
+      title: "CRF Design at eRIC",
       description:
-        "At ERIC, we specialize in Case Report Form (CRF) design for clinical trials and clinical research, ensuring seamless data collection, accuracy, and regulatory compliance. Our team develops customized CRFs aligned with study protocols, supporting Electronic Data Capture (EDC) and efficient healthcare data management.",
+        "At eRIC, we specialize in Case Report Form (CRF) design for clinical trials and clinical research, ensuring seamless data collection, accuracy, and regulatory compliance. Our team develops customized CRFs aligned with study protocols, supporting Electronic Data Capture (EDC) and efficient healthcare data management.",
     },
     {
-      title: "Database Design (eCRF & Paper) at ERIC",
+      title: "Database Design (eCRF & Paper) at eRIC",
       description:
         "Our team develops protocol-driven databases optimized for Electronic Data Capture (EDC) and paper-based workflows. With a focus on clinical data management, validation, and regulatory standards, we create structured and audit-ready databases that support efficient clinical studies.",
     },
     {
-      title: "Data Management & SAS Programming at ERIC",
+      title: "Data Management & SAS Programming at eRIC",
       description:
-        "At ERIC, our Data Management and SAS Programming team ensures accurate and compliant clinical trial data processing. We specialize in data cleaning, validation, and transformation, supporting advanced data management systems and consistent clinical research outcomes.",
+        "At eRIC, our Data Management and SAS Programming team ensures accurate and compliant clinical trial data processing. We specialize in data cleaning, validation, and transformation, supporting advanced data management systems and consistent clinical research outcomes.",
     },
     {
-      title: "Blinded Data Entry at ERIC",
+      title: "Blinded Data Entry at eRIC",
       description:
         "We ensure accurate and unbiased blinded data entry for clinical trials, maintaining data integrity and compliance. Our trained professionals manage electronic (eCRF) and paper-based inputs with strong quality control, supporting reliable clinical data management and confidentiality.",
     },
     {
-      title: "Data Validation at ERIC",
+      title: "Data Validation at eRIC",
       description:
         "We ensure accuracy, consistency, and compliance in clinical trials through structured data validation processes. Our experts use automated and manual checks to identify discrepancies, supporting high-quality datasets and strong healthcare data management practices.",
     },
@@ -41,32 +41,32 @@ export default function DataManagement() {
         "We provide standardized and compliant clinical data coding for clinical research and clinical studies. Using industry dictionaries such as MedDRA and WHODrug, we ensure accurate classification of adverse events, medications, and medical history, maintaining data consistency and regulatory compliance.",
     },
     {
-      title: "External Data Handling at ERIC",
+      title: "External Data Handling at eRIC",
       description:
-        "At ERIC, we specialize in external data handling for clinical trials and clinical research, integrating data from central labs, biomarkers, imaging, and third-party vendors into clinical data management systems. Our team ensures data consistency, accuracy, and compliance through structured healthcare data management processes.",
+        "At eRIC, we specialize in external data handling for clinical trials and clinical research, integrating data from central labs, biomarkers, imaging, and third-party vendors into clinical data management systems. Our team ensures data consistency, accuracy, and compliance through structured healthcare data management processes.",
     },
     {
-      title: "SAE Reconciliation at ERIC",
+      title: "SAE Reconciliation at eRIC",
       description:
         "We ensure accurate and compliant Serious Adverse Event (SAE) reconciliation across clinical trials, aligning clinical and safety databases to maintain data integrity. Our experts compare and validate data from multiple sources, supporting reliable clinical data management and regulatory compliance.",
     },
     {
-      title: "Medical Review at ERIC",
+      title: "Medical Review at eRIC",
       description:
         "Our medical review process ensures the accuracy, consistency, and clinical relevance of data in clinical studies and clinical research. Experts conduct detailed assessments to identify discrepancies, protocol deviations, and safety concerns, ensuring high-quality healthcare data management.",
     },
     {
-      title: "Protocol Validation at ERIC",
+      title: "Protocol Validation at eRIC",
       description:
         "We ensure structured protocol validation across clinical trials to align with regulatory guidelines and study objectives. Our experts review CRFs, Electronic Data Capture (EDC) systems, and analysis plans to support consistent clinical data management and accurate execution.",
     },
     {
-      title: "Database Closure at ERIC",
+      title: "Database Closure at eRIC",
       description:
         "We support a seamless and compliant database closure process, the final stage of clinical data management in clinical trials. Our team performs validation, discrepancy resolution, and quality checks to ensure accurate and reliable data before database lock.",
     },
     {
-      title: "Data Mapping (CDISC) at ERIC",
+      title: "Data Mapping (CDISC) at eRIC",
       description:
         "We specialize in CDISC-compliant data mapping for clinical research, enabling structured conversion of clinical trial data into SDTM and ADaM formats. Our approach enhances data consistency, traceability, and compliance across healthcare data management systems for regulatory submissions.",
     },
@@ -128,7 +128,7 @@ locked on time
                 viewport={{ once: true }}
               >
                 <p className="text-gray-500 mb-6 leading-relaxed text-justify text-[17px]">
-                  Our data management team supports every stage — from CRF design and EDC build to database lock — across EDC and paper workflows. We work to CDISC standards from day one, so there is no painful conversion later and a smoother regulatory review. Where it speeds you up without giving up control, the Eric AI agents do the heavy lifting on build and entry.
+                  Our data management team supports every stage — from CRF design and EDC build to database lock — across EDC and paper workflows. We work to CDISC standards from day one, so there is no painful conversion later and a smoother regulatory review. Where it speeds you up without giving up control, the eRIC AI agents do the heavy lifting on build and entry.
 
                 </p>
               </motion.div>

@@ -64,7 +64,7 @@ export default function AddTimeline() {
             <input
               type="text"
               name="title"
-              placeholder="e.g. ERIC Founded"
+              placeholder="e.g. eRIC Founded"
               value={form.title}
               onChange={handleChange}
               className="w-full mt-1 px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-black focus:outline-none transition"

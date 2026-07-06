@@ -183,7 +183,7 @@ export default function ETMF() {
 
           {/* Quote Box */}
           <div className="mt-8 border-l-4 border-gray-800 bg-gray-100 p-4 italic text-gray-700 text-[17px] font-medium">
-          ""ERIC eTMF ensures seamless clinical trials documentation with real-time tracking, audit readiness, and compliance, supporting efficiency and data security."
+          "eRIC eTMF ensures seamless clinical trials documentation with real-time tracking, audit readiness, and compliance, supporting efficiency and data security."
           </div>
         </div>
       </section>

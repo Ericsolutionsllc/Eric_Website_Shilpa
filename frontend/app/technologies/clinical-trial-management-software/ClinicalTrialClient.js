@@ -115,7 +115,7 @@ export default function ClinicalTrial() {
             viewport={{ once: true }}
           >
             <h1 className="text-center text-3xl md:text-4xl font-bold mt-28">
-              Eric Clinical Trial Management Software(CTMS)
+              eRIC Clinical Trial Management Software(CTMS)
             </h1>
           </motion.div>
 
@@ -146,7 +146,7 @@ export default function ClinicalTrial() {
                 viewport={{ once: true }}
               >
                 <p className="text-gray-500 mb-6 leading-relaxed text-justify text-[17px]">
-                 ERIC CTMS gives drug developers a scalable, cost-effective way to manage trials without the heavy upfront cost and long implementation of legacy systems. It replaces spreadsheet-and-email tracking with real-time study management — site status, milestones, monitoring visits, and budgets in one view — and shortens study start-up.
+                 eRIC CTMS gives drug developers a scalable, cost-effective way to manage trials without the heavy upfront cost and long implementation of legacy systems. It replaces spreadsheet-and-email tracking with real-time study management — site status, milestones, monitoring visits, and budgets in one view — and shortens study start-up.
 
                 </p>
               </motion.div>
@@ -158,7 +158,7 @@ export default function ClinicalTrial() {
                 viewport={{ once: true }}
               >
                 <p className="text-gray-500 mb-8 leading-relaxed text-justify text-[17px]">
-                  ERIC CTMS offers drug developers a scalable and cost-effective
+                  eRIC CTMS offers drug developers a scalable and cost-effective
                   solution to enhance management, performance, and reduce study
                   startup costs in clinical trials.
                 </p>

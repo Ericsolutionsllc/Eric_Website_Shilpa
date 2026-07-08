@@ -86,7 +86,6 @@ export const getSingleTeamMember = async (req, res) => {
 export const updateTeamMember = async (req, res) => {
   try {
     const member = await Team.findById(req.params.id);
-
     if (!member) {
       return res.status(404).json({ message: "Not found" });
     }
@@ -96,18 +95,22 @@ export const updateTeamMember = async (req, res) => {
       fs.unlinkSync(member.image.url);
     }
 
+    // Update text fields
     member.name = req.body.name || member.name;
     member.designation = req.body.designation || member.designation;
     member.quote = req.body.quote || member.quote;
 
-    member.socialLinks = {
-      email: req.body.email || member.socialLinks.email,
-      facebook: req.body.facebook || member.socialLinks.facebook,
-      instagram: req.body.instagram || member.socialLinks.instagram,
-      twitter: req.body.twitter || member.socialLinks.twitter,
-      linkedin: req.body.linkedin || member.socialLinks.linkedin,
-    };
+    // ✅ Fix: update order
+    member.order = req.body.order !== undefined ? Number(req.body.order) : member.order;
 
+    // ✅ Fix: update social links – allow empty strings
+    member.socialLinks.email = req.body.email;
+    member.socialLinks.facebook = req.body.facebook;
+    member.socialLinks.instagram = req.body.instagram;
+    member.socialLinks.twitter = req.body.twitter;
+    member.socialLinks.linkedin = req.body.linkedin;
+
+    // Update image if provided
     if (req.file) {
       member.image = {
         url: req.file.path.replace(/\\/g, "/"),

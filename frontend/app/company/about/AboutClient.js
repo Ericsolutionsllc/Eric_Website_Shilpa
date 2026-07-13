@@ -265,7 +265,7 @@ export default function AboutPage() {
                   className="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition"
                 >
                   <h4 className="font-semibold mb-2 text-lg">
-                    {item.icon} {item.year} {item.title}
+                     {item.year} {item.title}
                   </h4>
 
                   <p className="text-gray-500 text-sm sm:text-[15px]">

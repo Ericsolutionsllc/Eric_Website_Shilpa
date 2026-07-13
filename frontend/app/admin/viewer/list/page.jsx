@@ -4,6 +4,8 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { ArrowLeft, ArrowRight, Search } from "lucide-react";
+import {toast} from "react-toastify";
+import Link from "next/link";
 
 export default function ViewerListPage() {
     const [viewers, setViewers] = useState([]);
@@ -34,7 +36,8 @@ export default function ViewerListPage() {
             );
 
             if (res.data.success) {
-                alert("Deleted successfully");
+                toast.success("Deleted successfully");
+                router.push("/admin/viewer/list");
                 setViewers((prev) => prev.filter((item) => item._id !== id));
             }
         } catch (err) {
@@ -118,16 +121,26 @@ export default function ViewerListPage() {
             </div>
 
             {/* 🔍 SEARCH INPUT */}
-            <div className="mb-4 relative w-full md:w-1/3">
-                <Search className="absolute left-3 top-2.5 w-4 h-4 text-slate-400" />
-                <input
-                    type="text"
-                    placeholder="Search by name..."
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                    className="w-full pl-10 pr-4 py-2 border border-slate-200 rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-slate-300"
-                />
-            </div>
+          <div className="mb-4 flex items-center justify-between gap-3 flex-wrap">
+        {/* Search input (left) */}
+        <div className="relative w-full md:w-1/3 min-w-[200px]">
+          <Search className="absolute left-3 top-2.5 w-4 h-4 text-slate-400" />
+          <input
+            type="text"
+            placeholder="Search by name..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="w-full pl-10 pr-4 py-2 border border-slate-200 rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-slate-300"
+          />
+        </div>
+
+        {/* Add button (right) — wrapped in Link */}
+        <Link href="/admin/viewer/add">
+          <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-xl transition shadow-sm whitespace-nowrap">
+            + Add Viewer
+          </button>
+        </Link>
+      </div>
 
             {/* TABLE CARD */}
             <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">

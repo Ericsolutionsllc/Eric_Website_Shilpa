@@ -84,7 +84,7 @@ export default function AdminSidebar() {
             <div className="bg-white/10 p-3 rounded-xl w-full border border-white/10">
               <div className="flex items-center gap-3">
                 <img
-                  src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/${subadmin.profileImg.replace(/\\/g, "/")}`}
+                  src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${subadmin.profileImg.replace(/\\/g, "/")}`}
                   width={45}
                   height={45}
                   className="rounded-full border-2 border-emerald-500 object-cover"

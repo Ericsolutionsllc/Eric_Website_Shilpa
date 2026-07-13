@@ -56,6 +56,10 @@
 
 import { BetaAnalyticsDataClient } from "@google-analytics/data";
 import path from "path";
+import dotenv from "dotenv";
+dotenv.config();
+
+
 
 const credentials = JSON.parse(
   process.env.GOOGLE_SERVICE_ACCOUNT_JSON

@@ -51,6 +51,14 @@ export const requireAdminAuth = async (req, res, next) => {
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
+    // 👇 ENFORCE ADMIN ROLE
+    if (decoded.userType !== "admin") {
+      return res.status(403).json({
+        success: false,
+        message: "Forbidden: admin access required",
+      });
+    }
+
     req.user = {
       id: decoded.id,
       userType: decoded.userType,

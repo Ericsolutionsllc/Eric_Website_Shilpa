@@ -18,6 +18,7 @@ import * as XLSX from "xlsx";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 import { Download } from "lucide-react";
+import {toast} from 'react-toastify';
 
 export default function AdminContactsPage() {
   const [contacts, setContacts] = useState([]);
@@ -105,6 +106,7 @@ export default function AdminContactsPage() {
       if (res.ok) {
         setContacts((prev) => prev.filter((c) => c._id !== id));
         setDeleteConfirm(null);
+        toast.success("contact deleted successfully")
       }
     } catch (error) {
       console.error(error);

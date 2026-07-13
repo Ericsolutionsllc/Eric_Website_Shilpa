@@ -10,10 +10,7 @@ const timelineSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    icon: {
-      type: String, 
-      default: "🚀", // emoji or icon string
-    },
+   
     year: {
       type: Number,
       required: true,

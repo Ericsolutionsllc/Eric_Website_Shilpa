@@ -3,10 +3,14 @@
 import { useState, useRef } from "react";
 import axios from "axios";
 import { FaCloudUploadAlt, FaTrash } from "react-icons/fa";
+import Link from "next/link";
+import {toast} from "react-toastify";
+import {useRouter} from "next/navigation";
 
 
 export default function CreateViewerPage() {
   const fileInputRef = useRef();
+  const router = useRouter();
 
   const [form, setForm] = useState({
     fullName: "",
@@ -65,7 +69,7 @@ export default function CreateViewerPage() {
       );
 
       if (res.data.success) {
-        alert("Viewer created successfully");
+        toast.success("Viewer created successfully");
 
         setForm({
           fullName: "",
@@ -76,6 +80,7 @@ export default function CreateViewerPage() {
           profileImg: "",
           status: "active",
         });
+        router.push("/admin/viewer/list")
 
         setPreview(null);
       }
@@ -93,6 +98,18 @@ export default function CreateViewerPage() {
 
         {/* HEADER */}
         <div className="mb-8">
+          <Link href="/admin/viewer/list">
+            <button
+              type="submit"
+              disabled={loading}
+              className={`px-4 py-2 rounded-lg text-white font-medium transition mb-4 ${
+                loading ? "bg-blue-600" : "bg-blue-600 hover:bg-blue-700"
+              }`}
+            >
+              Back
+            </button>
+          </Link>
+
           <h1 className="text-2xl font-semibold text-gray-800">
             Create Viewer
           </h1>

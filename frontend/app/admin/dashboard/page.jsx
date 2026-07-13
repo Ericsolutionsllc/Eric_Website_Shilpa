@@ -1,8 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+
 import axios from "axios";
 import { useEffect, useState, useMemo } from "react";
+import { jwtDecode } from "jwt-decode"; // <-- added
+
 import {
   Users,
   UserCheck,
@@ -54,6 +58,12 @@ const getFlag = (countryCode) => {
     .replace(/./g, (char) => String.fromCodePoint(127397 + char.charCodeAt()));
 };
 export default function AdminDashboard() {
+
+const router = useRouter();
+  const [isAuthorized, setIsAuthorized] = useState(false); // <-- new
+
+
+
   // All contacts (full list)
   const [allContacts, setAllContacts] = useState([]);
   // Filtered & sorted contacts (derived)
@@ -91,6 +101,34 @@ export default function AdminDashboard() {
 
   // Entrance animation for the country table rows
   const [tableVisible, setTableVisible] = useState(false);
+
+  // --- ROLE CHECK on mount ---
+  useEffect(() => {
+    const token = localStorage.getItem("adminToken");
+    if (!token) {
+      router.push("/admin/login");
+      return;
+    }
+
+    try {
+      const decoded = jwtDecode(token);
+      const userType = decoded.userType;
+      if (userType !== "admin") {
+        // Not an admin → redirect
+        router.push("/admin/login");
+        return;
+      }
+      // Optional: check token expiration
+      // const exp = decoded.exp;
+      // if (Date.now() >= exp * 1000) { ... }
+
+      // Authorized
+      setIsAuthorized(true);
+    } catch (error) {
+      console.error("Invalid token:", error);
+      router.push("/admin/login");
+    }
+  }, [router]);
 
   useEffect(() => {
     fetchDashboardData();

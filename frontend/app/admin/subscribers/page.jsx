@@ -15,6 +15,7 @@ import {
 import * as XLSX from "xlsx";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
+import {toast} from "react-toastify"
 
 export default function AdminNewsletterPage() {
   const [subscribers, setSubscribers] = useState([]);
@@ -84,6 +85,7 @@ export default function AdminNewsletterPage() {
       if (res.ok) {
         setSubscribers((prev) => prev.filter((s) => s._id !== id));
         setDeleteConfirm(null);
+        toast.success("subscriber deleted successfully");
       }
     } catch (error) {
       console.log(error);

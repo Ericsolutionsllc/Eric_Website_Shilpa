@@ -5,6 +5,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { FaCloudUploadAlt, FaTrash } from "react-icons/fa";
+import Link from 'next/link';
 
 export default function AddTeam() {
   const router = useRouter();
@@ -57,6 +58,15 @@ export default function AddTeam() {
   return (
     <div className="p-6 md:p-10 bg-gray-50 min-h-screen">
       <div className="mx-auto bg-white shadow-lg rounded-xl p-8 max-w-4xl">
+         <Link href="/admin/team/list">
+            <button
+              type="submit"
+              className={`px-4 py-2 rounded-lg text-white font-medium transition mb-4 bg-blue-600 hover:bg-blue-700"
+              }`}
+            >
+              Back
+            </button>
+          </Link>
         <h1 className="text-2xl md:text-3xl font-bold mb-8">Add Team Member</h1>
 
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -208,7 +218,7 @@ export default function AddTeam() {
 
           {/* SUBMIT BUTTON */}
           <button className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
-            Save Member
+            Add member
           </button>
         </form>
       </div>

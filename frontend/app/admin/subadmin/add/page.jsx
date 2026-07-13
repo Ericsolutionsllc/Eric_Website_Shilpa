@@ -3,9 +3,14 @@
 import { useState, useRef } from "react";
 import axios from "axios";
 import { FaCloudUploadAlt, FaTrash } from "react-icons/fa";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 
 export default function CreateSubAdminPage() {
+
+  const router = useRouter();
   const fileInputRef = useRef();
 
   const [form, setForm] = useState({
@@ -61,11 +66,10 @@ export default function CreateSubAdminPage() {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       );
 
       if (res.data.success) {
-        alert("SubAdmin created successfully");
 
         setForm({
           fullName: "",
@@ -78,6 +82,9 @@ export default function CreateSubAdminPage() {
         });
 
         setPreview(null);
+        toast.success("subadmin created successfully");
+
+        router.push("/admin/subadmin/list");
       }
     } catch (err) {
       alert(err.response?.data?.message || "Error");
@@ -88,11 +95,20 @@ export default function CreateSubAdminPage() {
 
   return (
     <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-6 flex justify-center items-center">
-      
       <div className="w-full max-w-8xl bg-white rounded-2xl shadow-xl p-8">
-
         {/* HEADER */}
         <div className="mb-8">
+          <Link href="/admin/subadmin/list">
+            <button
+              type="submit"
+              disabled={loading}
+              className={`px-4 py-2 rounded-lg text-white font-medium transition mb-4 ${
+                loading ? "bg-blue-600" : "bg-blue-600 hover:bg-blue-700"
+              }`}
+            >
+              Back
+            </button>
+          </Link>
           <h1 className="text-2xl font-semibold text-gray-800">
             Create Sub Admin
           </h1>
@@ -103,9 +119,7 @@ export default function CreateSubAdminPage() {
 
         {/* FORM */}
         <form onSubmit={handleSubmit} className="space-y-6">
-
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-
             {/* FULL NAME */}
             <div>
               <label className="text-sm font-medium mb-1 block">
@@ -123,9 +137,7 @@ export default function CreateSubAdminPage() {
 
             {/* EMAIL */}
             <div>
-              <label className="text-sm font-medium mb-1 block">
-                Email
-              </label>
+              <label className="text-sm font-medium mb-1 block">Email</label>
               <input
                 type="email"
                 name="email"
@@ -138,9 +150,7 @@ export default function CreateSubAdminPage() {
 
             {/* PASSWORD */}
             <div>
-              <label className="text-sm font-medium mb-1 block">
-                Password
-              </label>
+              <label className="text-sm font-medium mb-1 block">Password</label>
               <input
                 type="password"
                 name="password"
@@ -168,9 +178,7 @@ export default function CreateSubAdminPage() {
 
             {/* GENDER */}
             <div>
-              <label className="text-sm font-medium mb-1 block">
-                Gender
-              </label>
+              <label className="text-sm font-medium mb-1 block">Gender</label>
               <select
                 name="gender"
                 value={form.gender}
@@ -186,9 +194,7 @@ export default function CreateSubAdminPage() {
 
             {/* STATUS */}
             <div>
-              <label className="text-sm font-medium mb-1 block">
-                Status
-              </label>
+              <label className="text-sm font-medium mb-1 block">Status</label>
               <select
                 name="status"
                 value={form.status}
@@ -214,9 +220,7 @@ export default function CreateSubAdminPage() {
               {!preview ? (
                 <>
                   <FaCloudUploadAlt size={40} className="text-gray-400 mb-2" />
-                  <p className="text-sm text-gray-500">
-                    Click to upload image
-                  </p>
+                  <p className="text-sm text-gray-500">Click to upload image</p>
                 </>
               ) : (
                 <div className="relative">
@@ -254,9 +258,7 @@ export default function CreateSubAdminPage() {
             type="submit"
             disabled={loading}
             className={`w-full py-3 rounded-lg text-white font-medium transition ${
-              loading
-                ? "bg-blue-600"
-                : "bg-blue-600 hover:bg-blue-700"
+              loading ? "bg-blue-600" : "bg-blue-600 hover:bg-blue-700"
             }`}
           >
             {loading ? "Creating..." : "Create Sub Admin"}

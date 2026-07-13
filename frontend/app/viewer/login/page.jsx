@@ -33,10 +33,13 @@ export default function ViewerLogin() {
       );
 
       if (res.data.token) {
+           
+
+
         localStorage.setItem("viewerToken", res.data.token);
 
         // ✅ store full user data
-        localStorage.setItem("viewerData", JSON.stringify(res.data.viewer));
+        // localStorage.setItem("viewerData", JSON.stringify(res.data.viewer));
         router.push("/viewer/dashboard");
       }
     } catch (err) {

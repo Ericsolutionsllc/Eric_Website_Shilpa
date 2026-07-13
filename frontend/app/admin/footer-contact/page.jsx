@@ -134,7 +134,7 @@ export default function ContactAdmin() {
     ${
       status === "saved"
         ? "bg-green-600 text-white"
-        : "bg-black text-white hover:bg-gray-800"
+        : "bg-blue-600 text-white hover:bg-blue-700"
     }
   `}
           >

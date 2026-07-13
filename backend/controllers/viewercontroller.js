@@ -9,7 +9,7 @@ const generateViewerToken = (id) => {
     id,
     userType: "viewer",
 
-  }, process.env.JWT_SECRET, { expiresIn: "7d" });
+  }, process.env.VIEWER_JWT_SECRET, { expiresIn: "7d" });
 };
 
 
@@ -196,6 +196,14 @@ export const viewerLogin = async (req, res) => {
         success: false,
         message: "Viewer not found",
         
+      });
+    }
+
+     // 🔒 Check if subadmin is inactive
+    if (viewer.status === "inactive") {
+      return res.status(403).json({
+        success: false,
+        message: "Your account is inactive. Please contact the administrator.",
       });
     }
 

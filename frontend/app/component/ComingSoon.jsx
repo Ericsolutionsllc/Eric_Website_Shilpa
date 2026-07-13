@@ -16,7 +16,7 @@ export default function EricComingSoon() {
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <div className="relative w-full max-w-md h-[300px] md:h-[400px]">
-            <Link   href="https://ai.ericsolutions.com/" target="blank">
+            <Link  href="https://ai.ericsolutions.com/" target="_self">
             <Image
               src="/comingsoon/eRIC AI logo.gif"
               alt="eRIC AI — AI agents for clinical trials"
@@ -43,9 +43,9 @@ export default function EricComingSoon() {
 
           </p>
 
-          <div className="mt-6">
+          <div className="mt-6 inline-block bg-blue-800 hover:bg-blue-900 text-white px-6 py-3 rounded-lg font-medium transition">
             <Link
-              href="https://ai.ericsolutions.com/" target="blank"
+              href="https://ai.ericsolutions.com/" target="_self"
               className="inline-block bg-blue-800 hover:bg-blue-900 text-white px-6 py-3 rounded-lg font-medium transition"
             >
               Explore eRIC AI   

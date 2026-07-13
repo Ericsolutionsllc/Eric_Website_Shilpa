@@ -4,8 +4,12 @@ import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { useParams, useRouter } from "next/navigation";
 import { FaCloudUploadAlt, FaTrash } from "react-icons/fa";
+import { toast } from "react-toastify";
+import Link from "next/link";
 
 export default function EditSubAdminPage() {
+
+
   const { id } = useParams();
   const router = useRouter();
   const fileInputRef = useRef();
@@ -53,7 +57,7 @@ export default function EditSubAdminPage() {
 
         // 🔥 existing image preview
         setPreview(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/${data.profileImg}`
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}${data.profileImg}`
         );
       }
     } catch (err) {
@@ -116,7 +120,7 @@ export default function EditSubAdminPage() {
       );
 
       if (res.data.success) {
-        alert("Updated successfully");
+        toast.success("Updated successfully");
         router.push("/admin/subadmin/list");
       }
     } catch (err) {
@@ -135,6 +139,17 @@ export default function EditSubAdminPage() {
 
         {/* HEADER */}
         <div className="mb-8">
+          <Link href="/admin/subadmin/list">
+                      <button
+                        type="submit"
+                        disabled={loading}
+                        className={`px-4 py-2 rounded-lg text-white font-medium transition mb-4 ${
+                          loading ? "bg-blue-600" : "bg-blue-600 hover:bg-blue-700"
+                        }`}
+                      >
+                        Back
+                      </button>
+                    </Link>
           <h1 className="text-2xl font-semibold text-gray-800">
             Edit Sub Admin
           </h1>

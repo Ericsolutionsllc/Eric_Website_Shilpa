@@ -28,6 +28,8 @@ import Navbar from "./component/Navbar"
 import Footer from "./component/Footer"
 import Script from "next/script"
 import LayoutContent from "./LayoutContent";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 export const metadata = {
@@ -56,6 +58,7 @@ export default function RootLayout({ children }) {
 
         <LayoutContent>
           {children}
+           <ToastContainer />
         </LayoutContent>
 
         {/* Google Analytics */}

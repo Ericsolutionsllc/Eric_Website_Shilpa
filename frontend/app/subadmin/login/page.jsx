@@ -33,10 +33,12 @@ export default function AdminLogin() {
       );
 
       if (res.data.token) {
+    
+
         localStorage.setItem("subadminToken", res.data.token);
 
         // ✅ store full user data
-        localStorage.setItem("subadminData", JSON.stringify(res.data.subadmin));
+        // localStorage.setItem("subadminData", JSON.stringify(res.data.subadmin));
         router.push("/subadmin/dashboard");
       }
     } catch (err) {

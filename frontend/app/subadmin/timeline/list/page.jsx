@@ -13,7 +13,9 @@ export default function TimelineList() {
   }, []);
 
   const fetchData = async () => {
-    const res = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/timeline/all`);
+    const res = await axios.get(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/timeline/all`
+    );
     setData(res.data.data);
   };
 
@@ -21,7 +23,9 @@ export default function TimelineList() {
     if (!confirm("Delete this timeline?")) return;
 
     try {
-      await axios.delete(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/timeline/${id}`);
+      await axios.delete(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/timeline/${id}`
+      );
       toast.success("Deleted");
       fetchData();
     } catch {
@@ -35,7 +39,7 @@ export default function TimelineList() {
         <h2 className="text-2xl font-semibold">Timeline List</h2>
 
         <Link href="/subadmin/timeline/add">
-          <button className="bg-black text-white px-4 py-2 rounded">
+          <button className="bg-blue-600 text-white px-4 py-2 rounded">
             + Add Timeline
           </button>
         </Link>
@@ -45,7 +49,7 @@ export default function TimelineList() {
         <table className="w-full text-left">
           <thead className="bg-gray-100">
             <tr>
-              <th className="p-3">Icon</th>
+              {/* Icon column removed */}
               <th className="p-3">Year</th>
               <th className="p-3">Title</th>
               <th className="p-3">Order</th>
@@ -56,7 +60,7 @@ export default function TimelineList() {
           <tbody>
             {data.map((item) => (
               <tr key={item._id} className="border-t">
-                <td className="p-3 text-xl">{item.icon}</td>
+                {/* Icon cell removed */}
                 <td className="p-3">{item.year}</td>
                 <td className="p-3">{item.title}</td>
                 <td className="p-3">{item.order}</td>
@@ -68,6 +72,7 @@ export default function TimelineList() {
                     </button>
                   </Link>
 
+                  {/* Delete button (commented out in original) */}
                   {/* <button
                     onClick={() => handleDelete(item._id)}
                     className="bg-red-500 text-white px-3 py-1 rounded"

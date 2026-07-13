@@ -5,6 +5,7 @@ import axios from "axios";
 import { useParams, useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import { FaCloudUploadAlt, FaTrash } from "react-icons/fa";
+import Link from "next/link"
 
 export default function EditTeam() {
   const { id } = useParams();
@@ -66,6 +67,15 @@ export default function EditTeam() {
   return (
     <div className="p-6 md:p-5 bg-gray-50 min-h-screen">
       <div className="mx-auto bg-white shadow-lg rounded-xl p-8 max-w-4xl">
+          <Link href="/subadmin/team/list">
+            <button
+              type="submit"
+              className={`px-4 py-2 rounded-lg text-white font-medium transition mb-4 bg-blue-600 hover:bg-blue-700"
+              }`}
+            >
+              Back
+            </button>
+          </Link>
         <h1 className="text-2xl md:text-3xl font-bold mb-8">
           Edit Team Member
         </h1>

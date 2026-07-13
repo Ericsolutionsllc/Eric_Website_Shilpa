@@ -4,6 +4,9 @@ import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { useParams, useRouter } from "next/navigation";
 import { FaCloudUploadAlt, FaTrash } from "react-icons/fa";
+import Link from "next/link";
+import {toast} from "react-toastify";
+
 
 export default function EditViewerPage() {
   const { id } = useParams();
@@ -50,6 +53,8 @@ export default function EditViewerPage() {
           profileImg: data.profileImg,
           status: data.status,
         });
+        
+
 
         // 🔥 existing image preview
         setPreview(
@@ -116,7 +121,7 @@ export default function EditViewerPage() {
       );
 
       if (res.data.success) {
-        alert("Updated successfully");
+        toast.success("Updated successfully");
         router.push("/admin/viewer/list");
       }
     } catch (err) {
@@ -135,6 +140,17 @@ export default function EditViewerPage() {
 
         {/* HEADER */}
         <div className="mb-8">
+           <Link href="/admin/viewer/list">
+            <button
+              type="submit"
+              disabled={loading}
+              className={`px-4 py-2 rounded-lg text-white font-medium transition mb-4 ${
+                loading ? "bg-blue-600" : "bg-blue-600 hover:bg-blue-700"
+              }`}
+            >
+              Back
+            </button>
+          </Link>
           <h1 className="text-2xl font-semibold text-gray-800">
             Edit Viewer
           </h1>

@@ -45,7 +45,7 @@ export default function TimelineList() {
         <table className="w-full text-left">
           <thead className="bg-gray-100">
             <tr>
-              <th className="p-3">Icon</th>
+              
               <th className="p-3">Year</th>
               <th className="p-3">Title</th>
               <th className="p-3">Order</th>
@@ -56,7 +56,7 @@ export default function TimelineList() {
           <tbody>
             {data.map((item) => (
               <tr key={item._id} className="border-t">
-                <td className="p-3 text-xl">{item.icon}</td>
+            
                 <td className="p-3">{item.year}</td>
                 <td className="p-3">{item.title}</td>
                 <td className="p-3">{item.order}</td>

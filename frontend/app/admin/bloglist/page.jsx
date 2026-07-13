@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaSearch, FaEdit, FaTrash } from "react-icons/fa";
+import Link from "next/link";
 
 const ListBlogs = () => {
   const [blogs, setBlogs] = useState([]);
@@ -72,20 +73,31 @@ const ListBlogs = () => {
 
       {/* Search */}
 
-      <div className="mb-6 relative w-full md:max-w-md">
-        <FaSearch className="absolute left-3 top-3 text-gray-400" />
+     {/* 🔍 SEARCH + ADD BUTTON — same line */}
+      <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
+        {/* Search input (left) */}
+        <div className="relative w-full md:max-w-md flex-1 min-w-[200px]">
+          <FaSearch className="absolute left-3 top-3 text-gray-400" />
+          <input
+            type="text"
+            placeholder="Search blogs..."
+            value={searchTerm}
+            onChange={(e) => {
+              setSearchTerm(e.target.value);
+              setCurrentPage(1);
+            }}
+            className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
+          />
+        </div>
 
-        <input
-          type="text"
-          placeholder="Search blogs..."
-          value={searchTerm}
-          onChange={(e) => {
-            setSearchTerm(e.target.value);
-            setCurrentPage(1);
-          }}
-          className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
-        />
+        {/* Add button (right) — wrapped in Link */}
+        <Link href="/admin/blog">
+          <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition shadow-sm whitespace-nowrap">
+            + Add Blog
+          </button>
+        </Link>
       </div>
+
 
       {/* ================= DESKTOP TABLE ================= */}
 

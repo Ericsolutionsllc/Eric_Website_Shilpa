@@ -8,6 +8,7 @@ import { FaCloudUploadAlt, FaTrash } from "react-icons/fa";
 
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import Link from "next/link";
 
 export default function EditBlog() {
   const router = useRouter();
@@ -103,6 +104,17 @@ export default function EditBlog() {
   return (
     <div className="p-6 md:p-10 bg-gray-50 min-h-screen">
       <div className=" mx-auto bg-white shadow-lg rounded-xl p-8">
+        <Link href="/admin/bloglist">
+            <button
+              type="submit"
+              disabled={loading}
+              className={`px-4 py-2 rounded-lg text-white font-medium transition mb-4 ${
+                loading ? "bg-blue-600" : "bg-blue-600 hover:bg-blue-700"
+              }`}
+            >
+              Back
+            </button>
+          </Link>
         <h1 className="text-2xl md:text-3xl font-bold mb-8">Edit Blog</h1>
 
         <form onSubmit={handleSubmit} className="space-y-6">

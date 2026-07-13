@@ -10,7 +10,7 @@ const generateSubAdminToken = (id) => {
       id,
       userType: "subadmin",
     },
-    process.env.JWT_SECRET,
+    process.env.SUBADMIN_JWT_SECRET,
     { expiresIn: "7d" },
   );
 };
@@ -196,6 +196,14 @@ export const subAdminLogin = async (req, res) => {
       return res.status(404).json({
         success: false,
         message: "SubAdmin not found",
+      });
+    }
+
+    // 🔒 Check if subadmin is inactive
+    if (subadmin.status === "inactive") {
+      return res.status(403).json({
+        success: false,
+        message: "Your account is inactive. Please contact the administrator.",
       });
     }
 

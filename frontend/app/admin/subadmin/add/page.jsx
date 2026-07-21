@@ -60,7 +60,7 @@ export default function CreateSubAdminPage() {
       const token = localStorage.getItem("adminToken");
 
       const res = await axios.post(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/subadmin/create`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/admin/subadmin/create`,
         formData,
         {
           headers: {

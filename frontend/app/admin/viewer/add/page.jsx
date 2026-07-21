@@ -59,7 +59,7 @@ export default function CreateViewerPage() {
       const token = localStorage.getItem("adminToken");
 
       const res = await axios.post(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/viewer/create`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/admin/viewer/create`,
         formData,
         {
           headers: {

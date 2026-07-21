@@ -1,7 +1,5 @@
 import SubAdmin from "../models/subadminmodel.js";
 import bcrypt from "bcryptjs";
-import fs from "fs";
-import path from "path";
 import jwt from "jsonwebtoken";
 
 const generateSubAdminToken = (id) => {
@@ -13,43 +11,6 @@ const generateSubAdminToken = (id) => {
     process.env.SUBADMIN_JWT_SECRET,
     { expiresIn: "7d" },
   );
-};
-
-// ✅ CREATE SUBADMIN
-export const createSubAdmin = async (req, res) => {
-  try {
-    const { fullName, email, password, number, gender, status } = req.body;
-
-    const existing = await SubAdmin.findOne({ email });
-    if (existing) {
-      return res.status(400).json({
-        success: false,
-        message: "SubAdmin already exists",
-      });
-    }
-
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    const profileImg = req.file ? `/uploads/subadmin/${req.file.filename}` : "";
-
-    const subadmin = await SubAdmin.create({
-      fullName,
-      email,
-      password: hashedPassword,
-      number,
-      gender,
-      profileImg,
-      status,
-    });
-
-    res.status(201).json({
-      success: true,
-      message: "Created successfully",
-      subadmin,
-    });
-  } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
-  }
 };
 
 // ✅ GET ALL SUBADMINS
@@ -84,93 +45,6 @@ export const getSubAdminById = async (req, res) => {
     res.status(200).json({
       success: true,
       subadmin,
-    });
-  } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
-  }
-};
-
-// ✅ UPDATE SUBADMIN
-export const updateSubAdmin = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const data = req.body;
-
-    // 🔥 find existing user FIRST
-    const existing = await SubAdmin.findById(id);
-
-    if (!existing) {
-      return res.status(404).json({
-        success: false,
-        message: "SubAdmin not found",
-      });
-    }
-
-    // 🔥 if new image uploaded → delete old image
-    if (req.file) {
-      if (existing.profileImg) {
-        const oldImagePath = path.join(
-          process.cwd(),
-          existing.profileImg.replace(/^\/+/, ""),
-        );
-        if (fs.existsSync(oldImagePath)) {
-          fs.unlinkSync(oldImagePath); // delete old file
-        }
-      }
-
-      data.profileImg = `/uploads/subadmin/${req.file.filename}`;
-    }
-
-    // 🔥 password hash
-    if (data.password) {
-      data.password = await bcrypt.hash(data.password, 10);
-    }
-
-    const updated = await SubAdmin.findByIdAndUpdate(id, data, {
-      new: true,
-      runValidators: true,
-    });
-
-    res.status(200).json({
-      success: true,
-      message: "SubAdmin updated",
-      subadmin: updated,
-    });
-  } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
-  }
-};
-
-// ✅ DELETE SUBADMIN
-export const deleteSubAdmin = async (req, res) => {
-  try {
-    const { id } = req.params;
-
-    const subadmin = await SubAdmin.findById(id);
-
-    if (!subadmin) {
-      return res.status(404).json({
-        success: false,
-        message: "SubAdmin not found",
-      });
-    }
-
-    // 🔥 delete image from folder
-    if (subadmin.profileImg) {
-      const imagePath = path.join(
-        process.cwd(),
-        subadmin.profileImg.replace(/^\/+/, ""),
-      );
-      if (fs.existsSync(imagePath)) {
-        fs.unlinkSync(imagePath);
-      }
-    }
-
-    await SubAdmin.findByIdAndDelete(id);
-
-    res.status(200).json({
-      success: true,
-      message: "SubAdmin deleted successfully",
     });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });

@@ -33,7 +33,7 @@ export default function EditViewerPage() {
       const token = localStorage.getItem("adminToken");
 
       const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/viewer/single/${id}`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/admin/viewer/single/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -58,7 +58,7 @@ export default function EditViewerPage() {
 
         // 🔥 existing image preview
         setPreview(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/${data.profileImg}`
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}${data.profileImg}`
         );
       }
     } catch (err) {
@@ -111,7 +111,7 @@ export default function EditViewerPage() {
       const token = localStorage.getItem("adminToken");
 
       const res = await axios.put(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/viewer/update/${id}`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/admin/viewer/update/${id}`,
         formData,
         {
           headers: {

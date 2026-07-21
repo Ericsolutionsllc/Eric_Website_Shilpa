@@ -32,7 +32,6 @@ export const requireUserAuth = async (req, res, next) => {
   }
 };
 
-
 export const requireAdminAuth = async (req, res, next) => {
   try {
     const authHeader = req.headers.authorization || "";
@@ -49,9 +48,8 @@ export const requireAdminAuth = async (req, res, next) => {
       });
     }
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, process.env.ADMIN_JWT_SECRET);
 
-    // 👇 ENFORCE ADMIN ROLE
     if (decoded.userType !== "admin") {
       return res.status(403).json({
         success: false,
@@ -89,7 +87,7 @@ export const requireSubadminAuth = async (req, res, next) => {
       });
     }
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, process.env.SUBADMIN_JWT_SECRET);
 
     req.user = {
       id: decoded.id,
@@ -104,8 +102,6 @@ export const requireSubadminAuth = async (req, res, next) => {
     });
   }
 };
-
-
 
 export const requireViewerAuth = async (req, res, next) => {
   try {
@@ -123,7 +119,7 @@ export const requireViewerAuth = async (req, res, next) => {
       });
     }
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, process.env.VIEWER_JWT_SECRET);
 
     req.user = {
       id: decoded.id,

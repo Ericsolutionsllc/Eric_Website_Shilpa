@@ -27,7 +27,7 @@ export default function ViewerListPage() {
             const token = localStorage.getItem("adminToken");
 
             const res = await axios.delete(
-                `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/viewer/delete/${id}`,
+                `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/admin/viewer/delete/${id}`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -51,7 +51,7 @@ export default function ViewerListPage() {
             const token = localStorage.getItem("adminToken");
 
             const res = await axios.get(
-                `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/viewer/all`,
+                `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/admin/viewer/all`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -173,7 +173,7 @@ export default function ViewerListPage() {
 
                                     <td className="p-4">
                                         <img
-                                            src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/${user.profileImg}`}
+                                            src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${user.profileImg}`}
                                             className="w-10 h-10 rounded-full object-cover "
                                         />
                                     </td>

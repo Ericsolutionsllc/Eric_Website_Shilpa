@@ -26,10 +26,16 @@ const storage = multer.diskStorage({
     if (req.baseUrl.includes("article")) {
       folder = "uploads/article";
     }
-       if (req.baseUrl.includes("subadmin")) {
+    if (
+      req.baseUrl.includes("subadmin") ||
+      req.originalUrl.includes("/subadmin")
+    ) {
       folder = "uploads/subadmin";
     }
-      if (req.baseUrl.includes("viewer")) {
+    if (
+      req.baseUrl.includes("viewer") ||
+      req.originalUrl.includes("/viewer")
+    ) {
       folder = "uploads/viewer";
     }
      

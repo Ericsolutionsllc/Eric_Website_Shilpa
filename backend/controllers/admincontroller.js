@@ -1,6 +1,10 @@
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
+import fs from "fs";
+import path from "path";
 import Admin from "../models/adminmodel.js";
+import SubAdmin from "../models/subadminmodel.js";
+import Viewer from "../models/viewermodel.js";
 
 const generateAdminToken = (id) => {
   return jwt.sign(
@@ -163,8 +167,305 @@ export const resetAdminPassword = async (req, res) => {
   }
 };
 
+export const createSubAdmin = async (req, res) => {
+  try {
+    const { fullName, email, password, number, gender, status } = req.body;
 
+    const existing = await SubAdmin.findOne({ email });
+    if (existing) {
+      return res.status(400).json({
+        success: false,
+        message: "SubAdmin already exists",
+      });
+    }
 
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const profileImg = req.file ? `/uploads/subadmin/${req.file.filename}` : "";
+
+    const subadmin = await SubAdmin.create({
+      fullName,
+      email,
+      password: hashedPassword,
+      number,
+      gender,
+      profileImg,
+      status,
+    });
+
+    res.status(201).json({
+      success: true,
+      message: "Created successfully",
+      subadmin,
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+export const getAllSubAdmins = async (req, res) => {
+  try {
+    const subadmins = await SubAdmin.find().sort({ createdAt: -1 });
+
+    res.status(200).json({
+      success: true,
+      count: subadmins.length,
+      subadmins,
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+export const getSubAdminById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const subadmin = await SubAdmin.findById(id);
+
+    if (!subadmin) {
+      return res.status(404).json({
+        success: false,
+        message: "SubAdmin not found",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      subadmin,
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+export const updateSubAdmin = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const data = req.body;
+
+    const existing = await SubAdmin.findById(id);
+
+    if (!existing) {
+      return res.status(404).json({
+        success: false,
+        message: "SubAdmin not found",
+      });
+    }
+
+    if (req.file) {
+      if (existing.profileImg) {
+        const oldImagePath = path.join(
+          process.cwd(),
+          existing.profileImg.replace(/^\/+/, ""),
+        );
+        if (fs.existsSync(oldImagePath)) {
+          fs.unlinkSync(oldImagePath);
+        }
+      }
+
+      data.profileImg = `/uploads/subadmin/${req.file.filename}`;
+    }
+
+    if (data.password) {
+      data.password = await bcrypt.hash(data.password, 10);
+    }
+
+    const updated = await SubAdmin.findByIdAndUpdate(id, data, {
+      new: true,
+      runValidators: true,
+    });
+
+    res.status(200).json({
+      success: true,
+      message: "SubAdmin updated",
+      subadmin: updated,
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+export const deleteSubAdmin = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const subadmin = await SubAdmin.findById(id);
+
+    if (!subadmin) {
+      return res.status(404).json({
+        success: false,
+        message: "SubAdmin not found",
+      });
+    }
+
+    if (subadmin.profileImg) {
+      const imagePath = path.join(
+        process.cwd(),
+        subadmin.profileImg.replace(/^\/+/, ""),
+      );
+      if (fs.existsSync(imagePath)) {
+        fs.unlinkSync(imagePath);
+      }
+    }
+
+    await SubAdmin.findByIdAndDelete(id);
+
+    res.status(200).json({
+      success: true,
+      message: "SubAdmin deleted successfully",
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+export const createViewer = async (req, res) => {
+  try {
+    const { fullName, email, password, number, gender, status } = req.body;
+
+    const existing = await Viewer.findOne({ email });
+    if (existing) {
+      return res.status(400).json({
+        success: false,
+        message: "Viewer already exists",
+      });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const profileImg = req.file ? `/uploads/viewer/${req.file.filename}` : "";
+
+    const viewer = await Viewer.create({
+      fullName,
+      email,
+      password: hashedPassword,
+      number,
+      gender,
+      profileImg,
+      status,
+    });
+
+    res.status(201).json({
+      success: true,
+      message: "Created successfully",
+      viewer,
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+export const getAllViewers = async (req, res) => {
+  try {
+    const viewers = await Viewer.find().sort({ createdAt: -1 });
+
+    res.status(200).json({
+      success: true,
+      count: viewers.length,
+      viewers,
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+export const getViewerById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const viewer = await Viewer.findById(id);
+
+    if (!viewer) {
+      return res.status(404).json({
+        success: false,
+        message: "Viewer not found",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      viewer,
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+export const updateViewer = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const data = req.body;
+
+    const existing = await Viewer.findById(id);
+
+    if (!existing) {
+      return res.status(404).json({
+        success: false,
+        message: "Viewer not found",
+      });
+    }
+
+    if (req.file) {
+      if (existing.profileImg) {
+        const oldImagePath = path.join(
+          process.cwd(),
+          existing.profileImg.replace(/^\/+/, ""),
+        );
+        if (fs.existsSync(oldImagePath)) {
+          fs.unlinkSync(oldImagePath);
+        }
+      }
+
+      data.profileImg = `/uploads/viewer/${req.file.filename}`;
+    }
+
+    if (data.password) {
+      data.password = await bcrypt.hash(data.password, 10);
+    }
+
+    const updated = await Viewer.findByIdAndUpdate(id, data, {
+      new: true,
+      runValidators: true,
+    });
+
+    res.status(200).json({
+      success: true,
+      message: "Viewer updated",
+      viewer: updated,
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+export const deleteViewer = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const viewer = await Viewer.findById(id);
+
+    if (!viewer) {
+      return res.status(404).json({
+        success: false,
+        message: "Viewer not found",
+      });
+    }
+
+    if (viewer.profileImg) {
+      const imagePath = path.join(
+        process.cwd(),
+        viewer.profileImg.replace(/^\/+/, ""),
+      );
+      if (fs.existsSync(imagePath)) {
+        fs.unlinkSync(imagePath);
+      }
+    }
+
+    await Viewer.findByIdAndDelete(id);
+
+    res.status(200).json({
+      success: true,
+      message: "Viewer deleted successfully",
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
 
 // multi factor autentication
 

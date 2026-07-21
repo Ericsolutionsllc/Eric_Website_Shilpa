@@ -34,7 +34,7 @@ export default function EditSubAdminPage() {
       const token = localStorage.getItem("adminToken");
 
       const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/subadmin/single/${id}`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/admin/subadmin/single/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -110,7 +110,7 @@ export default function EditSubAdminPage() {
       const token = localStorage.getItem("adminToken");
 
       const res = await axios.put(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/subadmin/update/${id}`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/admin/subadmin/update/${id}`,
         formData,
         {
           headers: {

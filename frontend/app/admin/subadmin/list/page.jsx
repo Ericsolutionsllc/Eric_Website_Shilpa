@@ -27,7 +27,7 @@ export default function SubAdminListPage() {
       const token = localStorage.getItem("adminToken");
 
       const res = await axios.delete(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/subadmin/delete/${id}`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/admin/subadmin/delete/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -50,7 +50,7 @@ export default function SubAdminListPage() {
       const token = localStorage.getItem("adminToken");
 
       const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/subadmin/all`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/admin/subadmin/all`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
